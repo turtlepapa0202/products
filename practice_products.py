@@ -18,9 +18,26 @@ print(products)
 print(products[0])
 print(products[0][0])
 
+for p in products:
+	print(p)
+for p in products[0]:
+	print(p)
+for p in products:
+	print(p[0])
+for p in products:
+	print(p[0], '的價格是', p[1])
+
+
+# 寫入檔案
+with open('products.csv', 'w') as f:
+	for p in products:
+		f.write(p[0] + ',' + p[1] + '\n')
+
 # 簡化程式，小list裝入大list
 s_product = [prod_name, price]
 products.append(s_product)
 
 # 更簡化程式
 products.append([prod_name, price])
+
+
