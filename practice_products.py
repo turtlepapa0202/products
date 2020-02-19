@@ -2,22 +2,26 @@
 # 若要讓使用者也處理價格，要怎麼處理? (使用二維清單)
 # 清單中還有清單
 
+import os # operating system
 products = []
-# s_product = [] # 注意小清單要再回圈裏面(自己想想why~)
+if os.path.isfile('products.csv'):
+	print('yeah！ 找到檔案了') # 找到檔案要幹嘛? 把讀取檔案放進去~~~
+	# products = [] # products= [] 不能放在這，不然後面用不到
+	with open('products.csv', 'r') as f:
+	# with open('products.csv', 'r', encoding = 'utf-8') as f:
+		for line in f:
+			if '商品,價格' in line:
+				continue
+			name, price = line.strip().split(',')
+			# r = (line.strip().split(','))
+			# name = r[0]
+			# price = r[1]
+			# print(r)
+			products.append([name, price])
+		print(products)
+else:
+	print('找不到檔案...')
 
-# 讀取檔案
-with open('products.csv', 'r') as f:
-# with open('products.csv', 'r', encoding = 'utf-8') as f:
-	for line in f:
-		if '商品,價格' in line:
-			continue
-		name, price = line.strip().split(',')
-		# r = (line.strip().split(','))
-		# name = r[0]
-		# price = r[1]
-		# print(r)
-		products.append([name, price])
-	print(products)
 
 # 壤使用者輸入
 while True:
