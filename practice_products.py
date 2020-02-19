@@ -5,6 +5,21 @@
 products = []
 # s_product = [] # 注意小清單要再回圈裏面(自己想想why~)
 
+# 讀取檔案
+with open('products.csv', 'r') as f:
+# with open('products.csv', 'r', encoding = 'utf-8') as f:
+	for line in f:
+		if '商品,價格' in line:
+			continue
+		name, price = line.strip().split(',')
+		# r = (line.strip().split(','))
+		# name = r[0]
+		# price = r[1]
+		# print(r)
+		products.append([name, price])
+	print(products)
+
+# 壤使用者輸入
 while True:
 	prod_name = input('請輸入要買的商品: ')
 	if prod_name == 'q':
@@ -18,6 +33,7 @@ print(products)
 print(products[0])
 print(products[0][0])
 
+# 把商品價格印出來
 for p in products:
 	print(p)
 for p in products[0]:
